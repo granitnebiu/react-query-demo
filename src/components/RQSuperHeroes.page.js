@@ -6,7 +6,8 @@ const fetchSuperHeros = () => {
 };
 export const RQSuperHeroesPage = () => {
   const { isLoading, data, isError, error } = useQuery("super-heros", fetchSuperHeros, {
-    cacheTime: 5000,
+    // we use stale time when we know that the list does not change often
+    staleTime: 30000,
   });
 
   if (isLoading) {
