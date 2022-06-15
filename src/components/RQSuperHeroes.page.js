@@ -1,8 +1,8 @@
-import axios from "axios";
 import { useQuery } from "react-query";
+import axios from "../utils/axios";
 
 const fetchSuperHeros = () => {
-  return axios.get("http://localhost:4000/superheroes1");
+  return axios.get("/superheroes");
 };
 export const RQSuperHeroesPage = () => {
   const { isLoading, data, isError, error } = useQuery("super-heros", fetchSuperHeros);
@@ -19,7 +19,7 @@ export const RQSuperHeroesPage = () => {
     <>
       <h2>RQ Super Heros Page </h2>
       {data.data.map((item) => (
-        <p key={item.id}>{item.name}</p>
+        <div key={item.id}>{item.name}</div>
       ))}
     </>
   );
