@@ -6,12 +6,8 @@ const fetchSuperHeros = () => {
 };
 export const RQSuperHeroesPage = () => {
   const { isLoading, data, isError, error } = useQuery("super-heros", fetchSuperHeros, {
-    //cacheTime:5000, default value
-    //  staleTime: 0, default value
-    //refetchOnMount:true  default value ---- can be 'always' false
-    //refetchOnWindowFocus:true  default value --- can be 'always' false
-    refetchOnMount: true,
-    refetchOnWindowFocus: true, // data will be automatically updated
+    refetchInterval: 2000, //data will be automatically refetch every two secods
+    refetchIntervalInBackground: true, //it will contonie to pull data even when the browser is not in focus
   });
 
   if (isLoading) {
