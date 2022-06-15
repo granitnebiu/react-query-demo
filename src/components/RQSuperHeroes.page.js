@@ -6,8 +6,12 @@ const fetchSuperHeros = () => {
 };
 export const RQSuperHeroesPage = () => {
   const { isLoading, data, isError, error } = useQuery("super-heros", fetchSuperHeros, {
-    // we use stale time when we know that the list does not change often
-    staleTime: 30000,
+    //cacheTime:5000, default value
+    //  staleTime: 0, default value
+    //refetchOnMount:true  default value ---- can be 'always' false
+    //refetchOnWindowFocus:true  default value --- can be 'always' false
+    refetchOnMount: true,
+    refetchOnWindowFocus: true, // data will be automatically updated
   });
 
   if (isLoading) {
