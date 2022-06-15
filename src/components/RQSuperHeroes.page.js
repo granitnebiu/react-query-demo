@@ -5,11 +5,18 @@ const fetchSuperHeros = () => {
   return axios.get("/superheroes");
 };
 export const RQSuperHeroesPage = () => {
+  const onSuccess = (data) => {
+    console.log("Perform side effect after data fatching", data);
+  };
+  const onError = (error) => {
+    console.log("Perform side effect after encountering fatching", error);
+  };
   const { isLoading, data, isError, error, isFetching, refetch } = useQuery(
     "super-heros",
     fetchSuperHeros,
     {
-      enabled: false,
+      onSuccess,
+      onError,
     }
   );
 
