@@ -33,7 +33,7 @@ function App() {
           </Routes>
         </div>
       </Router>
-      <ReactQueryDevtools />
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   );
 }
